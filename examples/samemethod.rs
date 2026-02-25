@@ -7,4 +7,7 @@ fn main() {
     }
     let foo = Foo::new(1000);
     println!("value is {}", foo.into_iter().next().unwrap());
+
+    let foo = Foo::new(1000);
+    println!("value is {}", IntoIterator::into_iter(foo).next().unwrap());
 }
