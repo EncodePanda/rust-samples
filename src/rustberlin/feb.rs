@@ -4,9 +4,11 @@ use std::io::{self, BufRead, Cursor};
 fn example1() -> io::Result<()> {
     let mut rd = io::BufReader::new(Cursor::new(b"hello"));
 
-    // Type of buf:
     let buf: &[u8] = rd.fill_buf()?;
-    //          ^ immutable reference to bytes
+    //          ^       ^
+    //          | immutable reference to bytes
+    //                  | mutable reference to self
+    //
     // fill_buf signature:
     // fn fill_buf(&mut self) -> Result<&[u8]>
 
